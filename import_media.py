@@ -43,6 +43,8 @@ def _find_media(source_dir):
 
     types = ('*.JPG', '*.jpg',
             '*.JPEG', '*.jpeg',
+            '*.NEF', '*.nef',
+            '*.RW2', '*.rw2',
             '*.MOV', '*.mov',
             '*.MPEG', '*.mpeg',
             '*.MP4', '*.mp4')
