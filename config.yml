@@ -2,3 +2,4 @@
 source_indicator: .media_manager_source
 target_indicator: .media_manager_target
 min_file_size:    250000
+remove_source_file_duplicate: True

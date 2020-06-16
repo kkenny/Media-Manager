@@ -68,18 +68,30 @@ def _check_file_size(s):
 def _get_md5hash(s):
     BLOCKSIZE = 65536
     hasher = hashlib.md5()
-    with open(s, 'rb') as f:
-        buf = f.read(BLOCKSIZE)
-        while len(buf) > 0:
-            hasher.update(buf)
+    try:
+        with open(s, 'rb') as f:
             buf = f.read(BLOCKSIZE)
+            while len(buf) > 0:
+                hasher.update(buf)
+                buf = f.read(BLOCKSIZE)
+    finally:
+        f.close()
+
+    print(f'{s}: {hasher.hexdigest()}')
 
     return hasher.hexdigest()
 
 
+def _delete_media(f):
+    if ( CFG['remove_source_file_duplicate'] == True ):
+        print(f'Removing {f}...')
+        os.remove(f)
+    else:
+        print(f'Not removing {f} due to configuration.')
+
+
 def _copy_media(s, d):
     """Copy media from list of found files to destination directory"""
-
 
     (mode, ino, dev, nlink, uid, gid, size, atime, mtime, ctime) = os.stat(s)
 
@@ -118,6 +130,7 @@ def _copy_media(s, d):
             print(f'WARNING: {s} md5sum does not match {t}')
         else:
             print(f'INFO: {s} already exists at {t} and matches.')
+            _delete_media(s)
 
 
 target_dir = _find_dir(CFG['target_indicator'])
