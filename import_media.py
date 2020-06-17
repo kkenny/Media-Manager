@@ -138,7 +138,11 @@ target_dir = _find_dir(CFG['target_indicator'])
 print("Starting Import...\n")
 
 for x in _find_media(_find_dir(CFG['source_indicator'])):
-    _copy_media(x, target_dir)
+    f_name = x.name
+
+    if f_name.startswith('.'):
+    	_copy_media(x, target_dir)
+
 
 print("\nFinished Importing.\n")
 
