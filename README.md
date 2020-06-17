@@ -4,6 +4,16 @@ This utility will take a directory tree and scour it for photos and videos with 
 
 ## Requirements
 Python 3
+PyYAML
+
+## Installation
+Assuming you don't have a python3 environment set up...
+
+1. Download: https://github.com/kkenny/Media-Manager/archive/master.zip
+2. Move the zip file to somewhere meaningful outside of your downloads folder
+3. Unzip the zip file
+4. Open a terminal (on a mac: terminal.app)
+5. run this in the terminal: `python3 -m pip install PyYAML`
 
 ## Usage
 1. Create an empty file called .media_manager_source in the directory of media you want to organize
