@@ -140,7 +140,7 @@ print("Starting Import...\n")
 for x in _find_media(_find_dir(CFG['source_indicator'])):
     f_name = x.name
 
-    if f_name.startswith('.'):
+    if not f_name.startswith('.'):
     	_copy_media(x, target_dir)
 
 
